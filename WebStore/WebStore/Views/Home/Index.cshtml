@@ -1,10 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<WebStore.Models.Employee>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Index</title>
 </head>
 <body>
-    <p> Hello frome Home/View!</p>
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Patronymic</td>
+                <td>@item.Surname</td>
+                <td>@item.Age</td>
+                <td>@item.Id</td>
+            </tr>
+        }
+    </table>
 </body>
 </html>
