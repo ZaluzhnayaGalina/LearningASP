@@ -17,7 +17,8 @@ namespace WebStore.Controllers
                 Patronymic="Александровная",
                 Surname="Залужная",
                 Age=23,
-                Id=0
+                Id=0,
+                Hobbies = new List<string>{"Вязание", "Матбои"}
             },
             new Employee
             {
@@ -25,7 +26,8 @@ namespace WebStore.Controllers
                 Patronymic = "Александровная",
                 Surname = "Наумова",
                 Age=26,
-                Id=1
+                Id=1,
+                Hobbies = new List<string> {"Викторины"}
             }
         };
         public IActionResult Index()
@@ -38,5 +40,6 @@ namespace WebStore.Controllers
             return View(employee);
 
         }
+
     }
 }
