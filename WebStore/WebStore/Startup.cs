@@ -17,6 +17,7 @@ namespace WebStore
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,11 +28,10 @@ namespace WebStore
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            var myHello = Configuration["MyHello"];
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync(myHello);
-            });
+            app.UseMvc(routes => routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}"
+                ));
         }
     }
 }
