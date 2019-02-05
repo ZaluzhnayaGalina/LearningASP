@@ -1,20 +1,24 @@
-﻿@model IEnumerable<WebStore.Models.Employee>
-@{
-    ViewData["Title"] = "Список сотрудников";
+﻿@{
+    ViewData["Title"] = "EShopper | Home";
 }
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<hr />
-<table>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Patronymic</td>
-            <td>@item.Surname</td>
-            <td>@item.Age</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
-            </td>
-        </tr>
-    }
-</table>
+@await Html.PartialAsync("Partial/_Slider.cshtml")
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    @await  Html.PartialAsync("Partial/_LeftSideBar.cshtml")
+                </div>
+
+                <div class="col-sm-9 padding-right">
+
+                    @await  Html.PartialAsync("Partial/_FeaturesItems.cshtml")
+                    @await Html.PartialAsync("Partial/_CategoryTab.cshtml")
+                    @await  Html.PartialAsync("Partial/_RecommendedItems.cshtml")
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
