@@ -32,11 +32,25 @@ namespace WebStore.Controllers
         {
             return View(_employees);
         }
-        public IActionResult Details(int id)
+        public IActionResult Details(int? id)
         {
-            var employee = _employees.First(x => x.Id == id);
+            var employee = _employees.FirstOrDefault(x => x.Id == id);
+            if (employee is null)
+                return NotFound();
             return View(employee);
 
         }
+        [HttpPost]
+        public IActionResult EditEmployee(Employee e)
+        {
+            var employee = _employees.FirstOrDefault(x => x.Id == e.Id);
+            if (!(employee is null))
+            {
+                _employees.Remove(employee);
+                _employees.Add(e);
+                }
+            return RedirectToAction("Index");
+        }
+
     }
 }
