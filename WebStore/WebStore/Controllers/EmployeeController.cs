@@ -30,7 +30,7 @@ namespace WebStore.Controllers
         public IActionResult Edit(int? id)
         {
             if (id is null)
-                return BadRequest();
+                return View(new Employee());
             var employee = _employeesData.GetEmployee(id.Value);
             if (employee is null)
                 return NotFound();
