@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 
 namespace WebStore.Infrastructure.Implementations
 {
-    public class InMemoryEmployeeData : IEmployeesData
+    class InMemoryEmployeeData : IEmployeesData
     {
         private List<Employee> _employees = new List<Employee>
         {
@@ -16,7 +15,7 @@ namespace WebStore.Infrastructure.Implementations
                 Patronymic="Александровна",
                 Surname="Залужная",
                 Age=23,
-                Id=0
+                Id=1
             },
             new Employee
             {
@@ -24,7 +23,7 @@ namespace WebStore.Infrastructure.Implementations
                 Patronymic = "Александровна",
                 Surname = "Наумова",
                 Age=26,
-                Id=1
+                Id=2
             }
         };
         public void AddEmployee(Employee newEmployee)
