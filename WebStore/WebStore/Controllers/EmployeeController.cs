@@ -42,15 +42,36 @@ namespace WebStore.Controllers
             return View(employee);
 
         }
+        [HttpGet]
+        public IActionResult EditEmployee(int? id)
+        {
+            if (id is null)
+                return BadRequest();
+            var employee = _employees.FirstOrDefault(x => x.Id == id);
+            if (employee is null)
+                return NotFound();
+            return View(employee);
+        }
         [HttpPost]
         public IActionResult EditEmployee(Employee e)
         {
-            var employee = _employees.FirstOrDefault(x => x.Id == e.Id);
-            if (!(employee is null))
+            if (!ModelState.IsValid)
+                return View(e);
+            if (e.Id == 0)
             {
-                _employees.Remove(employee);
+                e.Id = _employees.Max(x => x.Id) + 1;
                 _employees.Add(e);
-                }
+            }
+            else
+            {
+                var employee = _employees.FirstOrDefault(x => x.Id == e.Id);
+                if (employee is null)
+                    return NotFound();
+                employee.Name = e.Name;
+                employee.Surname = e.Surname;
+                employee.Patronymic = e.Patronymic;
+                employee.Age = e.Age;
+            }
             return RedirectToAction("Index");
         }
 
