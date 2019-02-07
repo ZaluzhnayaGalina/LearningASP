@@ -75,6 +75,6 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 ######
-WebStore/wwwroot/font-awesome/*
-WebStore/wwwroot/jquery/*
-WebStore/wwwroot/twitter-bootstrap/*
+wwwroot/font-awesome/*
+wwwroot/jquery/*
+wwwroot/twitter-bootstrap/*
