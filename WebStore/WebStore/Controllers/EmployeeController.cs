@@ -7,12 +7,12 @@ namespace WebStore.Controllers
 {
     public class EmployeeController : Controller
     {
-        private List<Employee> _employees = new List<Employee>
+        private static List<Employee> _employees = new List<Employee>
         {
             new Employee
             {
                 Name = "Галина",
-                Patronymic="Александровная",
+                Patronymic="Александровна",
                 Surname="Залужная",
                 Age=23,
                 Id=0,
@@ -21,7 +21,7 @@ namespace WebStore.Controllers
             new Employee
             {
                 Name = "Наталья",
-                Patronymic = "Александровная",
+                Patronymic = "Александровна",
                 Surname = "Наумова",
                 Age=26,
                 Id=1,
@@ -34,6 +34,8 @@ namespace WebStore.Controllers
         }
         public IActionResult Details(int? id)
         {
+            if (id is null)
+                return BadRequest();
             var employee = _employees.FirstOrDefault(x => x.Id == id);
             if (employee is null)
                 return NotFound();
