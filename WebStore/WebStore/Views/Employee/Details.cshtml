@@ -1,29 +1,19 @@
 ﻿@model WebStore.Models.Employee
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Детали";
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-<h2>Details</h2>
-@using (Html.BeginForm("EditEmployee", "Employee", FormMethod.Post))
-{ 
-<fieldset>
-    @Html.HiddenFor(m=>m.Id)
-    <h3>Фамилия: @Html.EditorFor(m => m.Surname)</h3>
-    <h3>Имя: @Html.EditorFor(m => m.Name)</h3>
-    <h3>Отчество: @Html.EditorFor(m => m.Patronymic)</h3>
-    <h3>Возраст: @Html.EditorFor(m => m.Age)</h3>
+<div class="container">
+    
+        <fieldset>
+            <h3>ID: @Model.Id</h3>
+            <h3>Фамилия: @Model.Surname</h3>
+            <h3>Имя: @Model.Name</h3>
+            <h3>Отчество: @Model.Patronymic</h3>
+            <h3>Возраст: @Model.Age</h3>
+        </fieldset>
+    
+    <a asp-action="Index">Назад</a>
 
-    <h3>
-        Хобби:
-        <ul>
-            @foreach (var hobbie in Model.Hobbies)
-            {
-                <li>@hobbie</li>
-            }
-        </ul>
-    </h3>
-</fieldset>
-    <input type="submit" value="Сохранить" />
-}
-<a asp-action="Index">Назад</a>
+</div>
 

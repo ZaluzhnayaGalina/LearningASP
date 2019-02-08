@@ -4,9 +4,10 @@
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <hr />
-<table>
-    @foreach (var item in Model)
-    {
+<div class="container">
+    <table class="table">
+        @foreach (var item in Model)
+        {
         <tr>
             <td>@item.Name</td>
             <td>@item.Patronymic</td>
@@ -15,6 +16,15 @@
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
             </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
         </tr>
-    }
-</table>
+        }
+    </table>
+    <hr />
+    <a asp-action="Edit" class="btn">Добавить нового</a>
+</div>

@@ -1,54 +1,69 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 
 namespace WebStore.Controllers
 {
     public class EmployeeController : Controller
     {
-        private List<Employee> _employees = new List<Employee>
+        private IEmployeesData _employeesData;
+        public EmployeeController(IEmployeesData employeesData)
         {
-            new Employee
-            {
-                Name = "Галина",
-                Patronymic="Александровная",
-                Surname="Залужная",
-                Age=23,
-                Id=0,
-                Hobbies = new List<string>{"Вязание", "Матбои"}
-            },
-            new Employee
-            {
-                Name = "Наталья",
-                Patronymic = "Александровная",
-                Surname = "Наумова",
-                Age=26,
-                Id=1,
-                Hobbies = new List<string> {"Викторины"}
-            }
-        };
+            _employeesData = employeesData;
+        }
         public IActionResult Index()
         {
-            return View(_employees);
+            return View(_employeesData.Get());
         }
         public IActionResult Details(int? id)
         {
-            var employee = _employees.FirstOrDefault(x => x.Id == id);
+            if (id is null)
+                return BadRequest();
+            var employee = _employeesData.GetEmployee(id.Value);
             if (employee is null)
                 return NotFound();
             return View(employee);
 
         }
-        [HttpPost]
-        public IActionResult EditEmployee(Employee e)
+        [HttpGet]
+        public IActionResult Edit(int? id)
         {
-            var employee = _employees.FirstOrDefault(x => x.Id == e.Id);
-            if (!(employee is null))
+            if (id is null)
+                return View(new Employee());
+            var employee = _employeesData.GetEmployee(id.Value);
+            if (employee is null)
+                return NotFound();
+            return View(employee);
+        }
+        [HttpPost]
+        public IActionResult Edit(Employee e)
+        {
+            if (!ModelState.IsValid)
+                return View(e);
+            if (e.Id == 0)
             {
-                _employees.Remove(employee);
-                _employees.Add(e);
-                }
+                _employeesData.AddEmployee(e);
+            }
+            else
+            {
+                var employee = _employeesData.GetEmployee(e.Id);
+                if (employee is null)
+                    return NotFound();
+                employee.Name = e.Name;
+                employee.Surname = e.Surname;
+                employee.Patronymic = e.Patronymic;
+                employee.Age = e.Age;
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id is null)
+                return BadRequest();
+            var employee = _employeesData.GetEmployee(id.Value);
+            if (employee is null)
+                return NotFound();
+            _employeesData.Delete(id.Value);
             return RedirectToAction("Index");
         }
 
