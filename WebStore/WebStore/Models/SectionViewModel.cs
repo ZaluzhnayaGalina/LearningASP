@@ -10,7 +10,7 @@ namespace WebStore.Models
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
         public int OrderNumber { get; set; }
-        public List<SectionViewModel> Children { get; set; }
+        public List<SectionViewModel> Children { get; set; } = new List<SectionViewModel>();
         public SectionViewModel Parent { get; set; }
     }
 }

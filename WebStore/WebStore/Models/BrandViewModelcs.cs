@@ -10,7 +10,7 @@ namespace WebStore.Models
     public class BrandViewModelcs : INamedEntity, IOrderedEntity
     {
         public string Name { get; set; }
-        [HiddenInput(DisplayValue=false)]
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
         public int OrderNumber { get; set; }
     }
