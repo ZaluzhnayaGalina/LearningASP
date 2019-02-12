@@ -12,7 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordian" href="@(parentSection.Name.ToLower())">
+                        <a data-toggle="collapse" data-parent="#accordian" href="#@(parentSection.Name.ToLower())">
                             <span class="badge pull-right"><i class="fa fa-plus"></i></span>
                             @(parentSection.Name)
                         </a>
@@ -23,7 +23,11 @@
                         <ul>
                             @foreach (var child in parentSection.Children)
                             {
-                                <li><a href="#">child.Name</a></li>
+                            <li>
+                                <a asp-controller="Catalogue" asp-action="Shop" asp-route-SectionId="@child.Id">
+                                    @child.Name
+                                </a>
+                            </li>
                             }
                         </ul>
                     </div>
