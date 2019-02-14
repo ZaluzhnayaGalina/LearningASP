@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using WebStore.Data;
 using WebStore.DomainEntities.Entities;
 using WebStore.Infrastructure.Interfaces;
@@ -28,16 +29,6 @@ namespace WebStore.Infrastructure.Implementations
         public IEnumerable<Section> GetSections()
         {
             return TestData.Sections;
-        }
-
-        IEnumerable<Brand> IProductData.GetBrands()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerable<Section> IProductData.GetSections()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
