@@ -23,7 +23,8 @@ namespace WebStore
         {
             services.AddMvc();
             services.AddSingleton<IEmployeesData, InMemoryEmployeeData>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+            //  services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
             services.AddDbContext<WebStoreContext>(
                 opt=>opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
