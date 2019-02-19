@@ -18,7 +18,7 @@ namespace WebStore.DomainEntities.Entities
         public virtual Brand Brand { get; set; }
         ///  <summary>Ссылка на картинку</summary>
          public string ImageUrl { get; set; }
-
+        [Column(TypeName ="decimal(18,2)")]
         /// <summary>Цена</summary>
          public decimal Price { get; set; }
 }

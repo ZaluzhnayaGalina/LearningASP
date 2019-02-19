@@ -13,6 +13,11 @@ namespace WebStore.Infrastructure.Implementations
             return TestData.Brands;
         }
 
+        public Product GetProductById(int id)
+        {
+            return TestData.Products.FirstOrDefault(x => x.Id == id);
+        }
+
         public IEnumerable<Product> GetProducts(ProductFilter Filter)
         {
             IEnumerable<Product> products = TestData.Products;
