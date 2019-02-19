@@ -21,9 +21,27 @@ namespace WebStore.Controllers
             _userManager = Usermanager;
             _signInManager = SignInManager;
         }
+        [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            var logResult =
+                await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
+            if (logResult.Succeeded)
+            {
+                if (Url.IsLocalUrl(model.ReturnUrl))
+                    return Redirect(model.ReturnUrl);
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Неверное имя, или пароль пользователя");
+            return View(model);
         }
         [HttpGet]
         public IActionResult Register()
