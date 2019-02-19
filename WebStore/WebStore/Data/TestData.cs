@@ -260,6 +260,21 @@ namespace WebStore.Data
                     ParentId = null
                 }
             };
+        public static List<Product> Products { get; } = new List<Product>
+        {
+            new Product { Id = 1, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product1.jpg", OrderNumber= 0, SectionId = 2, BrandId = 1 },
+            new Product { Id = 2, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product2.jpg", OrderNumber= 1, SectionId = 2, BrandId = 1 },
+            new Product { Id = 3, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product3.jpg", OrderNumber= 2, SectionId = 2, BrandId = 1 },
+            new Product { Id = 4, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product4.jpg", OrderNumber= 3, SectionId = 2, BrandId = 1 },
+            new Product { Id = 5, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product5.jpg", OrderNumber= 4, SectionId = 2, BrandId = 2 },
+            new Product { Id = 6, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product6.jpg", OrderNumber= 5, SectionId = 2, BrandId = 1 },
+            new Product { Id = 7, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product7.jpg", OrderNumber= 6, SectionId = 2, BrandId = 1 },
+            new Product { Id = 8, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product8.jpg", OrderNumber= 7, SectionId = 25, BrandId = 1 },
+            new Product { Id = 9, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product9.jpg", OrderNumber= 8, SectionId = 25, BrandId = 1 },
+            new Product { Id = 10, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product10.jpg", OrderNumber= 9, SectionId = 25, BrandId = 3 },
+            new Product { Id = 11, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product11.jpg", OrderNumber= 10, SectionId = 25, BrandId = 3 },
+            new Product { Id = 12, Name = "Easy Polo Black Edition", Price = 1025, ImageUrl = "product12.jpg", OrderNumber= 11, SectionId = 25, BrandId = 3 },
+        };
     };
     
 }
