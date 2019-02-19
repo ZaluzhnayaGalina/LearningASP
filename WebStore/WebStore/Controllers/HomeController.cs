@@ -10,7 +10,6 @@ namespace WebStore.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index() => View();
-        public IActionResult Login() => View();
         public IActionResult ContactUs() => View();
         public IActionResult CheckOut() => View();
         public IActionResult Cart() => View();
