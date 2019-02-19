@@ -19,7 +19,7 @@ namespace WebStore
                 try
                 {
                     var db = services.GetRequiredService<WebStoreContext>();
-                    db.Initialize();
+                   // db.Initialize();
                 }
                 catch(Exception e)
                 {
