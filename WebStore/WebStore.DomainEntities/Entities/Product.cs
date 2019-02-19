@@ -9,12 +9,12 @@ namespace WebStore.DomainEntities.Entities
         public int OrderNumber { get; set; }
         /// <summary>Секция товара</summary>
          public int SectionId { get; set; }
-        [ForeignKey("SectionId")]
+        [ForeignKey(nameof(SectionId))]
         public virtual Section Section { get; set; }
 
         ///  <summary>Бренд товара</summary>
          public int? BrandId { get; set; }
-        [ForeignKey("BrandId")]
+        [ForeignKey(nameof(BrandId))]
         public virtual Brand Brand { get; set; }
         ///  <summary>Ссылка на картинку</summary>
          public string ImageUrl { get; set; }
