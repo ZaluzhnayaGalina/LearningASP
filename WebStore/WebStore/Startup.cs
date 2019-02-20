@@ -49,7 +49,7 @@ namespace WebStore
                 opt.Cookie.HttpOnly = true;
                 opt.Cookie.Expiration = TimeSpan.FromDays(150);
                 opt.LoginPath = "/Account/Login";
-                opt.LogoutPath = "Account/Logout";
+                opt.LogoutPath = "/Account/Logout";
                 opt.AccessDeniedPath = "/Account/AccessDenied";
                 opt.SlidingExpiration = true; 
             });
