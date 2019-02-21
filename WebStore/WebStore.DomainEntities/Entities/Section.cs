@@ -9,7 +9,7 @@ namespace WebStore.DomainEntities.Entities
     {
         public int? ParentId { get; set; }
         public int OrderNumber { get; set; }
-        [ForeignKey("ParentId")]
+        [ForeignKey(nameof(ParentId))]
         public virtual Section ParentSection { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
