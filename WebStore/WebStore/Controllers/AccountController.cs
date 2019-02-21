@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
-using  WebStore.DomainEntities.Entities;
+using WebStore.DomainEntities.Entities;
 
 namespace WebStore.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Account")]
     public class AccountController : Controller
     {
         private UserManager<User> _userManager;
@@ -26,7 +20,7 @@ namespace WebStore.Controllers
         {
             return View(new LoginViewModel());
         }
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)

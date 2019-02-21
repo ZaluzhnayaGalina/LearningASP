@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using WebStore.DAL.Context;
-using WebStore.Data;
 
 namespace WebStore
 {
