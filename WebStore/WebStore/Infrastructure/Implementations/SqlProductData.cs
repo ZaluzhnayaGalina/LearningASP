@@ -21,7 +21,10 @@ namespace WebStore.Infrastructure.Implementations
 
         public Product GetProductById(int id)
         {
-            return _context.Products.FirstOrDefault(x => x.Id == id);
+            return _context.Products
+                .Include(p => p.Brand)
+                .Include(p => p.Section)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter)
@@ -31,7 +34,9 @@ namespace WebStore.Infrastructure.Implementations
                     .Include(p=>p.Brand)
                     .Include(p=>p.Section)
                     .AsEnumerable();
-            IQueryable<Product> result = _context.Products;
+            IQueryable<Product> result = _context.Products
+                .Include(p => p.Brand)
+                .Include(p => p.Section);
             if (Filter.BrandId != null)
                 result = result.Where(x => x.BrandId == Filter.BrandId);
             if (Filter.SectionId != null)
