@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using WebStore.DAL.Context;
 using WebStore.DomainEntities.Entities;
@@ -26,7 +27,10 @@ namespace WebStore.Infrastructure.Implementations
         public IEnumerable<Product> GetProducts(ProductFilter Filter)
         {
             if (Filter is null)
-                return _context.Products;
+                return _context.Products
+                    .Include(p=>p.Brand)
+                    .Include(p=>p.Section)
+                    .AsEnumerable();
             IQueryable<Product> result = _context.Products;
             if (Filter.BrandId != null)
                 result = result.Where(x => x.BrandId == Filter.BrandId);

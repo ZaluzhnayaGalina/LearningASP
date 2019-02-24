@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<WebStore.Models.Employee>
 @{
     ViewData["Title"] = "Список сотрудников";
+    var isAdmin = User.IsInRole(WebStore.DomainEntities.Entities.User.AdminRole);
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <hr />
@@ -16,12 +17,15 @@
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
             </td>
+            @if (isAdmin)
+            {
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
             </td>
             <td>
                 <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
             </td>
+            }
         </tr>
         }
     </table>
