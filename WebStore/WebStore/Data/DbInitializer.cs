@@ -1,9 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.Context;
+using WebStore.DomainEntities.Entities;
 
 namespace WebStore.Data
 {
@@ -41,6 +44,44 @@ namespace WebStore.Data
                 context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Products] OFF");
                 transaction.Commit();
             }
+        }
+        internal static async Task InitializeIdentityAsync(this IServiceProvider serviceProvider)
+        {
+            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
+            if (!await roleManager.RoleExistsAsync(User.UserRole))
+            {
+                await roleManager.CreateAsync(new IdentityRole(User.UserRole));
+            }
+            if (! await roleManager.RoleExistsAsync(User.AdminUser))
+            {
+                await roleManager.CreateAsync(new IdentityRole(User.AdminUser));
+            }
+            var userManager = serviceProvider.GetService<UserManager<User>>();
+            var userStore = serviceProvider.GetService<IUserStore<User>>();
+            if (await userStore.FindByNameAsync(User.AdminUser, CancellationToken.None) is null)
+            {
+                var admin = new User
+                {
+                    UserName = User.AdminUser,
+                    Email = $"{User.AdminUser}@server.ru"
+                };
+                if ((await userManager.CreateAsync(admin, "admin123")).Succeeded)
+                    await userManager.AddToRoleAsync(admin, User.AdminRole);
+
+            }
+            if (await userStore.FindByNameAsync(User.TestUser, CancellationToken.None) is null)
+            {
+                var user = new User
+                {
+                    UserName = User.TestUser,
+                    Email = $"{User.TestUser}@server.ru"
+                };
+                if ((await userManager.CreateAsync(user, "123")).Succeeded)
+                    await userManager.AddToRoleAsync(user, User.UserRole);
+
+            }
+
+
         }
     }
 }

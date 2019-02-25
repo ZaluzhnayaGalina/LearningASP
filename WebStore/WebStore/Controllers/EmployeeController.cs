@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 
 namespace WebStore.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         private IEmployeesData _employeesData;
@@ -26,6 +28,7 @@ namespace WebStore.Controllers
 
         }
         [HttpGet]
+        [Authorize(Roles = DomainEntities.Entities.User.AdminRole)]
         public IActionResult Edit(int? id)
         {
             if (id is null)
@@ -36,6 +39,8 @@ namespace WebStore.Controllers
             return View(employee);
         }
         [HttpPost]
+        [Authorize(Roles = DomainEntities.Entities.User.AdminRole)]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Employee e)
         {
             if (!ModelState.IsValid)
@@ -56,6 +61,8 @@ namespace WebStore.Controllers
             }
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = DomainEntities.Entities.User.AdminRole)]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(int? id)
         {
             if (id is null)

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using WebStore.DAL.Context;
+using WebStore.Data;
 
 namespace WebStore
 {
@@ -18,7 +19,8 @@ namespace WebStore
                 try
                 {
                     var db = services.GetRequiredService<WebStoreContext>();
-                    // db.Initialize();
+                    db.Initialize();
+                    services.InitializeIdentityAsync().Wait();
                 }
                 catch(Exception e)
                 {
