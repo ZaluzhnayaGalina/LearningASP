@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using WebStore.Models;
+using WebStore.DomainEntities.ViewModels;
 namespace WebStore.Interfaces
 {
     public interface IEmployeesData

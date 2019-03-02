@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using WebStore.Interfaces;
-using WebStore.Models;
+using WebStore.DomainEntities.ViewModels;
 
 namespace WebStore.Services
 {

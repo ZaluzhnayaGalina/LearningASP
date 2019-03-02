@@ -8,7 +8,7 @@ using WebStore.DAL.Context;
 using WebStore.DomainEntities;
 using WebStore.DomainEntities.Entities;
 using WebStore.Interfaces;
-using WebStore.Models;
+using WebStore.DomainEntities.ViewModels;
 
 namespace WebStore.Services
 {

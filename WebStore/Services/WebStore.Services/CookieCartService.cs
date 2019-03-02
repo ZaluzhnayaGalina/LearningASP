@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using WebStore.DomainEntities.Entities;
 using WebStore.Interfaces;
-using WebStore.Models;
+using WebStore.DomainEntities.ViewModels;
 
 namespace WebStore.Services
 {
