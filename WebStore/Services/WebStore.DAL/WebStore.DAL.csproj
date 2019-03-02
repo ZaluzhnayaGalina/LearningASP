@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebStore.DomainEntities\WebStore.DomainEntities.csproj" />
+    <ProjectReference Include="..\..\Common\WebStore.DomainEntities\WebStore.DomainEntities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
