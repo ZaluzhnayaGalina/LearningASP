@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using WebStore.Models;
-namespace WebStore.Infrastructure.Interfaces
+namespace WebStore.Interfaces
 {
     public interface IEmployeesData
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using WebStore.DAL.Context;
 using WebStore.DomainEntities.Entities;
-using WebStore.Infrastructure.Interfaces;
+using WebStore.Interfaces;
 
-namespace WebStore.Infrastructure.Implementations
+namespace WebStore.Services
 {
     public class SqlProductData : IProductData
     {

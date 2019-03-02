@@ -3,10 +3,10 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using WebStore.DomainEntities.Entities;
-using WebStore.Infrastructure.Interfaces;
+using WebStore.Interfaces;
 using WebStore.Models;
 
-namespace WebStore.Infrastructure.Implementations
+namespace WebStore.Services
 {
     public class CookieCartService : ICartService
     {

@@ -2,9 +2,9 @@
 using System.Linq;
 using WebStore.Data;
 using WebStore.DomainEntities.Entities;
-using WebStore.Infrastructure.Interfaces;
+using WebStore.Interfaces;
 
-namespace WebStore.Infrastructure.Implementations
+namespace WebStore.Services
 {
     public class InMemoryProductData : IProductData
     {

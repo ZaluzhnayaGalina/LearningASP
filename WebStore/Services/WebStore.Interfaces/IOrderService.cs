@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using WebStore.DomainEntities.Entities;
 using WebStore.Models;
 
-namespace WebStore.Infrastructure.Interfaces
+namespace WebStore.Interfaces
 {
     public interface IOrderService
     {

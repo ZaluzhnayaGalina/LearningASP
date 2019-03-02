@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using WebStore.DAL.Context;
 using WebStore.DomainEntities;
 using WebStore.DomainEntities.Entities;
-using WebStore.Infrastructure.Interfaces;
+using WebStore.Interfaces;
 using WebStore.Models;
 
-namespace WebStore.Infrastructure.Implementations
+namespace WebStore.Services
 {
     public class SqlOrderService : IOrderService
     {
