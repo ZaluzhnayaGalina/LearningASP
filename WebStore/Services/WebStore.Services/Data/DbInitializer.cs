@@ -8,11 +8,11 @@ using Microsoft.Extensions.DependencyInjection;
 using WebStore.DAL.Context;
 using WebStore.DomainEntities.Entities;
 
-namespace WebStore.Data
+namespace WebStore.Services.Data
 {
-    internal static class DbInitializer
+    public static class DbInitializer
     {
-        internal static void Initialize(this WebStoreContext context)
+        public static void Initialize(this WebStoreContext context)
         {
             context.Database.EnsureCreated();
             if (context.Products.Any())
@@ -45,7 +45,7 @@ namespace WebStore.Data
                 transaction.Commit();
             }
         }
-        internal static async Task InitializeIdentityAsync(this IServiceProvider serviceProvider)
+        public static async Task InitializeIdentityAsync(this IServiceProvider serviceProvider)
         {
             var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
             if (!await roleManager.RoleExistsAsync(User.UserRole))

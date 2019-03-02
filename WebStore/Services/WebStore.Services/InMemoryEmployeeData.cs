@@ -5,7 +5,7 @@ using WebStore.DomainEntities.ViewModels;
 
 namespace WebStore.Services
 {
-    class InMemoryEmployeeData : IEmployeesData
+    public class InMemoryEmployeeData : IEmployeesData
     {
         private List<Employee> _employees = new List<Employee>
         {
