@@ -70,10 +70,11 @@ namespace WebStore
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseAuthentication();
-            app.UseMvc(routes => routes.MapRoute(
-                name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}"
-                ));
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(name: "areas", template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
