@@ -9,6 +9,8 @@ using WebStore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Context;
 using WebStore.DomainEntities.Entities;
+using WebStore.Interfaces.Api;
+using WebStore.Clients.Values;
 
 namespace WebStore
 {
@@ -24,6 +26,7 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<IValueService, ValuesClient>();
             services.AddSingleton<IEmployeesData, InMemoryEmployeeData>();
             //  services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SqlProductData>();
